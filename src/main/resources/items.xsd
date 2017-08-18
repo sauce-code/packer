@@ -5,6 +5,7 @@
 	elementFormDefault="qualified">
 
 	<xs:element name="name" type="xs:string" />
+	
 	<xs:element name="category" type="xs:string" />
 
 	<xs:element name="categories">
