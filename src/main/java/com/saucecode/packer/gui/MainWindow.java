@@ -88,7 +88,10 @@ public class MainWindow extends Application {
 		MenuItem save = new MenuItem("Speichern _unter...");
 		save.setOnAction(e -> {
 			FileChooser fileChooser = new FileChooser();
-			fileChooser.setTitle("Datei speichern");
+			fileChooser.setTitle("Speichern unter");
+			FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Textdateien (*.txt)", "*.txt");
+			fileChooser.getExtensionFilters().add(extFilter);
+			fileChooser.setInitialFileName("*.txt");
 			File file = fileChooser.showSaveDialog(stage);
 			if (file != null) {
 				try {
