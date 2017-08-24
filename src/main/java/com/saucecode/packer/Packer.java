@@ -20,7 +20,7 @@ import javax.xml.bind.Unmarshaller;
  *
  */
 public class Packer implements IPacker {
-
+	
 	/**
 	 * Path to default library.
 	 */
@@ -156,25 +156,14 @@ public class Packer implements IPacker {
 		// TODO noch nciht fertig
 		ArrayList<String> lines = new ArrayList<String>();
 		items.forEach(e -> lines.add(e.getName() + ", " + e.getCategory()));
-		Files.write(java.nio.file.Paths.get(file.getPath()), lines, Charset.forName("UTF-8"));
+		Files.write(java.nio.file.Paths.get(file.getPath()), lines, Charset.defaultCharset());
+//		Files.write(java.nio.file.Paths.get(file.getPath()), lines, Charset.forName("UTF-8"));
 	}
 
 	@Override
 	public String toString() {
 		return "Packer [path=" + path + ", items=" + items + ", categories=" + categories + ", sets=" + sets
 				+ ", selectedSets=" + selectedSets + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((categories == null) ? 0 : categories.hashCode());
-		result = prime * result + ((items == null) ? 0 : items.hashCode());
-		result = prime * result + ((path == null) ? 0 : path.hashCode());
-		result = prime * result + ((selectedSets == null) ? 0 : selectedSets.hashCode());
-		result = prime * result + ((sets == null) ? 0 : sets.hashCode());
-		return result;
 	}
 
 	@Override
@@ -212,6 +201,18 @@ public class Packer implements IPacker {
 		} else if (!sets.equals(other.sets))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((categories == null) ? 0 : categories.hashCode());
+		result = prime * result + ((items == null) ? 0 : items.hashCode());
+		result = prime * result + ((path == null) ? 0 : path.hashCode());
+		result = prime * result + ((selectedSets == null) ? 0 : selectedSets.hashCode());
+		result = prime * result + ((sets == null) ? 0 : sets.hashCode());
+		return result;
 	}
 
 }
