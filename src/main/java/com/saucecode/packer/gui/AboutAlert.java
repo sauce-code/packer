@@ -22,14 +22,12 @@ public class AboutAlert extends Alert {
 	public AboutAlert(Image logo) {
 		super(AlertType.INFORMATION);
 		ImageView image = new ImageView(logo);
-		image.setFitWidth(80.0);
-		image.setFitHeight(80.0);
 		setGraphic(image);
 		initStyle(StageStyle.UTILITY);
-		setTitle("About");
+		setTitle("Über");
 		setHeaderText(MetaInfo.TITLE + " " + MetaInfo.VERSION);
-		setContentText("Written by " + MetaInfo.AUTHOR + '\n' + "Logo by " + MetaInfo.LOGO_ARTIST + '\n' + "Email: "
-				+ MetaInfo.EMAIL + '\n' + "Repository: " + MetaInfo.REPOSITORY);
+		setContentText("Autor: " + MetaInfo.AUTHOR + '\n' + "Logo: " + MetaInfo.LOGO_ARTIST + '\n' + "Email: "
+				+ MetaInfo.EMAIL + '\n' + "Verzeichnis: " + MetaInfo.REPOSITORY);
 	}
 
 }

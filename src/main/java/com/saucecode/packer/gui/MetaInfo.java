@@ -31,11 +31,11 @@ public class MetaInfo {
 	/**
 	 * The repository, where you can find this project.
 	 */
-	public static final String REPOSITORY = "github.com/sauce-code/baghchal";
+	public static final String REPOSITORY = "github.com/sauce-code/packer";
 
 	/**
 	 * The logo artist.
 	 */
-	public static final String LOGO_ARTIST = "Anne Blezinger";
+	public static final String LOGO_ARTIST = "Dave Gandy (http://fontawesome.io)";
 
 }

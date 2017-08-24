@@ -1,22 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<items xmlns="http://www.w3schools.com/saucecode" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.w3schools.com/saucecode items.xsd">
-
-	<item>
-		<name>Zahnbürste</name>
-		<categories>
-			<category>Camping</category>
-			<category>Zu Hause</category>
-		</categories>
-	</item>
-
-	<item>
-		<name>Klobürste</name>
-		<categories>
-			<category>HaDiKo</category>
-			<category>Zu Hause</category>
-		</categories>
-	</item>
-
-</items>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns:items xmlns:ns="http://www.w3schools.com/saucecode" >
+    <item>
+        <name>Klobürste</name>
+        <category>Hygieneartikel</category>
+        <sets>
+            <set>HaDiKo</set>
+            <set>Zu Hause</set>
+        </sets>
+    </item>
+    <item>
+        <name>Unterwäsche</name>
+        <category>Kleidung</category>
+        <sets>
+            <set>Camping</set>
+            <set>Zu Hause</set>
+        </sets>
+    </item>
+</ns:items>
