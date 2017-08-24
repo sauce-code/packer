@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * Represents an item container. its a simple wrapper around {@link Item}.
+ * Represents an item container. Its a simple wrapper around {@link Item}.
  * 
  * @author Torben Kr&uuml;ger
  *
