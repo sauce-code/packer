@@ -24,7 +24,7 @@ public class AboutAlert extends Alert {
 		ImageView image = new ImageView(logo);
 		setGraphic(image);
 		initStyle(StageStyle.UTILITY);
-		setTitle("Über");
+		setTitle("Info");
 		setHeaderText(MetaInfo.TITLE + " " + MetaInfo.VERSION);
 		setContentText("Autor: " + MetaInfo.AUTHOR + '\n' + "Logo: " + MetaInfo.LOGO_ARTIST + '\n' + "Email: "
 				+ MetaInfo.EMAIL + '\n' + "Verzeichnis: " + MetaInfo.REPOSITORY);

@@ -76,7 +76,7 @@ public class MainWindow extends Application {
 		// ==== HELP MENU
 		// =========================================================================================
 
-		MenuItem about = new MenuItem("_Über");
+		MenuItem about = new MenuItem("Inf_o");
 		about.setOnAction(e -> new AboutAlert(logo).showAndWait());
 
 		Menu menuHelp = new Menu("_Hilfe", null, about);
