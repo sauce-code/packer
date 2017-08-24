@@ -24,32 +24,32 @@ public class Packer implements IPacker {
 	/**
 	 * Path to default library.
 	 */
-	protected static final String DEFAULT_LIBRARY_PATH = "src/main/resources/library.xml";
+	static final String DEFAULT_LIBRARY_PATH = "src/main/resources/library.xml";
 
 	/**
 	 * All items.
 	 */
-	protected final ArrayList<Item> items = new ArrayList<Item>();
+	private final ArrayList<Item> items = new ArrayList<Item>();
 
 	/**
 	 * All unique categories.
 	 */
-	protected final ArrayList<String> categories = new ArrayList<String>();
+	private final ArrayList<String> categories = new ArrayList<String>();
 
 	/**
 	 * All unique sets.
 	 */
-	protected final ArrayList<String> sets = new ArrayList<String>();
+	private final ArrayList<String> sets = new ArrayList<String>();
 
 	/**
 	 * All selected sets.
 	 */
-	protected final ArrayList<String> selectedSets = new ArrayList<String>();
+	private final ArrayList<String> selectedSets = new ArrayList<String>();
 
 	/**
 	 * Path to library.
 	 */
-	protected String path;
+	private String path;
 
 	/**
 	 * Creates a new packer with default library.
