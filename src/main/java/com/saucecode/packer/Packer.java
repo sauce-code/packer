@@ -132,9 +132,9 @@ public class Packer implements IPacker {
 		categories.clear();
 		sets.clear();
 
-		JAXBContext context = JAXBContext.newInstance(ItemsContainer.class);
+		JAXBContext context = JAXBContext.newInstance(ItemContainer.class);
 		Unmarshaller um = context.createUnmarshaller();
-        ItemsContainer itemContainer = (ItemsContainer) um.unmarshal(new FileReader(path));
+        ItemContainer itemContainer = (ItemContainer) um.unmarshal(new FileReader(path));
         items.addAll(itemContainer.getItems());
 		
 		for (Item item : items) {
