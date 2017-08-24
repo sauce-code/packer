@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 // "http://www.w3schools.com/saucecode")
 // @XmlRootElement(name = "items")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ItemsContainer {
+public class ItemContainer {
 
 	/**
 	 * The items.
