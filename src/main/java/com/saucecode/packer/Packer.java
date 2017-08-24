@@ -153,6 +153,7 @@ public class Packer implements IPacker {
 
 	@Override
 	public void write(File file) throws IOException {
+		// TODO noch nciht fertig
 		ArrayList<String> lines = new ArrayList<String>();
 		items.forEach(e -> lines.add(e.getName() + ", " + e.getCategory()));
 		Files.write(java.nio.file.Paths.get(file.getPath()), lines, Charset.forName("UTF-8"));
