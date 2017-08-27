@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Torben Kr&uuml;ger
  *
  */
-@XmlRootElement(name = "items", namespace = "http://www.w3schools.com/saucecode")
+@XmlRootElement(name = "items", namespace = "http://www.saucecode.com/packer")
 // @XmlRootElement(name = "items", namespace =
 // "http://www.w3schools.com/saucecode")
 // @XmlRootElement(name = "items")

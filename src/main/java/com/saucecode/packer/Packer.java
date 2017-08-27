@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -153,11 +154,18 @@ public class Packer implements IPacker {
 
 	@Override
 	public void write(File file) throws IOException {
-		// TODO noch nciht fertig
 		ArrayList<String> lines = new ArrayList<String>();
-		items.forEach(e -> lines.add(e.getName() + ", " + e.getCategory()));
+		lines.add("Packliste erstellt am " + LocalDateTime.now());
+		getSelectedCategories().forEach(c -> {
+			lines.add("");
+			lines.add(c);
+			getSelectedItems().forEach(i -> {
+				if (i.getCategory().equals(c)) {
+					lines.add("- " + i.getName());
+				}
+			});
+		});
 		Files.write(java.nio.file.Paths.get(file.getPath()), lines, Charset.defaultCharset());
-//		Files.write(java.nio.file.Paths.get(file.getPath()), lines, Charset.forName("UTF-8"));
 	}
 
 	@Override

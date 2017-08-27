@@ -87,17 +87,21 @@ public class MainWindow extends Application {
 
 		MenuItem save = new MenuItem("Speichern _unter...");
 		save.setOnAction(e -> {
-			FileChooser fileChooser = new FileChooser();
-			fileChooser.setTitle("Speichern unter");
-			FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Textdateien (*.txt)", "*.txt");
-			fileChooser.getExtensionFilters().add(extFilter);
-			fileChooser.setInitialFileName("*.txt");
-			File file = fileChooser.showSaveDialog(stage);
-			if (file != null) {
-				try {
-					packer.write(file);
-				} catch (IOException ex) {
-					new ExceptionAlert(ex).showAndWait();
+			if (packer.getSelectedItems().size() == 0) {
+				new ErrorAlert("Die Packliste ist leer!").showAndWait();
+			} else {
+				FileChooser fileChooser = new FileChooser();
+				fileChooser.setTitle("Speichern unter");
+				FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Textdateien (*.txt)", "*.txt");
+				fileChooser.getExtensionFilters().add(extFilter);
+				fileChooser.setInitialFileName("*.txt");
+				File file = fileChooser.showSaveDialog(stage);
+				if (file != null) {
+					try {
+						packer.write(file);
+					} catch (IOException ex) {
+						new ExceptionAlert(ex).showAndWait();
+					}
 				}
 			}
 		});
@@ -119,23 +123,25 @@ public class MainWindow extends Application {
 	}
 
 	/**
-	 * Refreshes the whole table.
-	 * 
-	 * @param selectedCategories
-	 *            all currently selected categories
+	 * Refreshes the gui.
 	 */
-	private void refreshTable() {
+	private void refresh() {
+
+		// refresh table
 		tableItems.clear();
 		List<Item> items = packer.getSelectedItems();
 		items.forEach(e -> tableItems.add(new TableItem(e.getName(), e.getCategory())));
-	}
 
-	/**
-	 * Refreshes the status bar.
-	 */
-	private void refreshStatusBar() {
-		statusBar.setText("Items: " + packer.getSelectedItems().size() + " \t Categories: "
-				+ packer.getSelectedCategories().size());
+		// refresh status bar
+		StringBuilder sb = new StringBuilder();
+		sb.append(packer.getSelectedItems().size());
+		sb.append(' ');
+		sb.append((packer.getSelectedItems().size() == 1) ? "Gegenstand" : "Gegenstände");
+		sb.append(" in ");
+		sb.append(packer.getSelectedCategories().size());
+		sb.append(' ');
+		sb.append((packer.getSelectedCategories().size() == 1) ? "Kategorie" : "Kategorien");
+		statusBar.setText(sb.toString());
 	}
 
 	@Override
@@ -163,8 +169,7 @@ public class MainWindow extends Application {
 					} else {
 						packer.unSelect(set);
 					}
-					refreshTable();
-					refreshStatusBar();
+					refresh();
 				}
 			});
 		}
@@ -181,7 +186,7 @@ public class MainWindow extends Application {
 		table.getColumns().add(name);
 		table.getColumns().add(category);
 
-		refreshStatusBar();
+		refresh();
 
 		BorderPane border = new BorderPane(table, initMenuBar(), null, statusBar, checkBoxes);
 

@@ -1,19 +1,80 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns:items xmlns:ns="http://www.w3schools.com/saucecode" >
-    <item>
-        <name>Klobürste</name>
-        <category>Hygieneartikel</category>
-        <sets>
-            <set>HaDiKo</set>
-            <set>Zu Hause</set>
-        </sets>
-    </item>
-    <item>
-        <name>Unterwäsche</name>
-        <category>Kleidung</category>
-        <sets>
-            <set>Camping</set>
-            <set>Zu Hause</set>
-        </sets>
-    </item>
+<ns:items xmlns="http://www.saucecode.com/packer" >
+	<item>
+	<name>sadas</name>
+		<name>Portemonnaie</name>
+		<category>Finanzen</category>
+		<sets>
+			<set>Festival</set>
+			<set>Urlaub</set>
+		</sets>
+	</item>
+	<item>
+		<name>Bargeld</name>
+		<category>Finanzen</category>
+		<sets>
+			<set>Urlaub</set>
+			<set>Festival</set>
+		</sets>
+	</item>
+	<item>
+		<name>EC-Karte</name>
+		<category>Finanzen</category>
+		<sets>
+			<set>Urlaub</set>
+			<set>Festival</set>
+		</sets>
+	</item>
+	<item>
+		<name>Kreditkarte</name>
+		<category>Finanzen</category>
+		<sets>
+			<set>Urlaub</set>
+		</sets>
+	</item>
+	<item>
+		<name>Notfall-Telefonnummern der Bank</name>
+		<category>Finanzen</category>
+		<sets>
+			<set>Urlaub</set>
+		</sets>
+	</item>
+	<item>
+		<name>Bürste / Kamm</name>
+		<category>Hygiene</category>
+		<sets>
+			<set>Urlaub</set>
+		</sets>
+	</item>
+	<item>
+		<name>Deodorant</name>
+		<category>Hygiene</category>
+		<sets>
+			<set>Urlaub</set>
+			<set>Festival</set>
+		</sets>
+	</item>
+	<item>
+		<name>Kontaktlinsen / Brille</name>
+		<category>Hygiene</category>
+		<sets>
+			<set>Urlaub</set>
+			<set>Festival</set>
+		</sets>
+	</item>
+	<item>
+		<name>Nagelpflegeset</name>
+		<category>Hygiene</category>
+		<sets>
+			<set>Urlaub</set>
+		</sets>
+	</item>
+	<item>
+		<name></name>
+		<category></category>
+		<sets>
+			<set></set>
+			<set></set>
+		</sets>
+	</item>
 </ns:items>
