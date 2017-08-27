@@ -1,7 +1,6 @@
 package com.saucecode.packer;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -10,9 +9,20 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
+
+import org.xml.sax.SAXException;
+
+import com.saucecode.packer.xml.Item;
+import com.saucecode.packer.xml.Items;
 
 /**
  * Represents a packer.
@@ -21,7 +31,12 @@ import javax.xml.bind.Unmarshaller;
  *
  */
 public class Packer implements IPacker {
-	
+
+	/**
+	 * Path to default schema.
+	 */
+	static final String DEFAULT_SCHEMA_PATH = "src/main/resources/items.xsd";
+
 	/**
 	 * Path to default library.
 	 */
@@ -79,7 +94,7 @@ public class Packer implements IPacker {
 		ArrayList<Item> selectedItems = new ArrayList<Item>();
 		for (Item item : items) {
 			boolean contains = false;
-			for (String set : item.getSets()) {
+			for (String set : item.getSets().getSet()) {
 				if (selectedSets.contains(set)) {
 					contains = true;
 				}
@@ -128,28 +143,47 @@ public class Packer implements IPacker {
 	}
 
 	@Override
-	public void read() throws FileNotFoundException, JAXBException {
+	public void read() throws JAXBException, SAXException, IOException {
+
+		// clear lists
 		items.clear();
 		categories.clear();
 		sets.clear();
 
-		JAXBContext context = JAXBContext.newInstance(ItemContainer.class);
+		// read schema file
+		File schemaFile = new File(DEFAULT_SCHEMA_PATH);
+		Source xmlFile = new StreamSource(new File(DEFAULT_LIBRARY_PATH));
+		SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+		Schema schema = schemaFactory.newSchema(schemaFile);
+
+		// validate library
+		Validator validator = schema.newValidator();
+		validator.validate(xmlFile);
+
+		// read xml file
+		JAXBContext context = JAXBContext.newInstance(Items.class);
 		Unmarshaller um = context.createUnmarshaller();
-        ItemContainer itemContainer = (ItemContainer) um.unmarshal(new FileReader(path));
-        items.addAll(itemContainer.getItems());
-		
-		for (Item item : items) {
-			for (String set : item.getSets()) {
+		Items items = (Items) um.unmarshal(new FileReader(path));
+
+		// buffer items
+		this.items.addAll(items.getItem());
+
+		// buffer sets
+		for (Item item : this.items) {
+			for (String set : item.getSets().getSet()) {
 				if (!sets.contains(set)) {
 					sets.add(set);
 				}
 			}
 		}
-		items.forEach(e -> {
+
+		// buffer categories
+		this.items.forEach(e -> {
 			if (!categories.contains(e.getCategory())) {
 				categories.add(e.getCategory());
 			}
 		});
+
 	}
 
 	@Override

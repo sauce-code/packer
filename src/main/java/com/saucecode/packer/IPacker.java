@@ -1,11 +1,14 @@
 package com.saucecode.packer;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
 import javax.xml.bind.JAXBException;
+
+import org.xml.sax.SAXException;
+
+import com.saucecode.packer.xml.Item;
 
 /**
  * Declares all public methods for packer.
@@ -98,14 +101,16 @@ public interface IPacker {
 	/**
 	 * Reads the library and buffers it.
 	 * 
-	 * @throws FileNotFoundException
-	 *             if the library file could not be found
 	 * @throws JAXBException
 	 *             if the library file has defective syntax
+	 * @throws SAXException
+	 *             if the read library is not valid
+	 * @throws IOException
+	 *             if schema file or library could not bee read
 	 * 
 	 * @since 1.0
 	 */
-	public void read() throws FileNotFoundException, JAXBException;
+	public void read() throws JAXBException, SAXException, IOException;
 
 	/**
 	 * Writes the customized packing list into a file.

@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.controlsfx.control.StatusBar;
 
-import com.saucecode.packer.Item;
 import com.saucecode.packer.Packer;
+import com.saucecode.packer.xml.Item;
 
 import javafx.application.Application;
 import javafx.application.Platform;

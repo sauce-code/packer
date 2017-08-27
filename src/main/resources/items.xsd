@@ -1,29 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.saucecode.com/packer/xml"
-	targetNamespace="http://www.saucecode.com/packer/xml"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:sc="http://www.saucecode.com/packer/xml" targetNamespace="http://www.saucecode.com/packer/xml"
 	elementFormDefault="qualified">
 
-	<xs:element name="name" type="xs:string" />
-	
-	<xs:element name="category" type="xs:string" />
-	
-	<xs:element name="set" type="xs:string" />
+	<xs:element name="name">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="1" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<xs:element name="category">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="1" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<xs:element name="set">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="1" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
 
 	<xs:element name="sets">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="set" maxOccurs="unbounded" />
+				<xs:element ref="sc:set" maxOccurs="unbounded" />
 			</xs:sequence>
 		</xs:complexType>
+		<xs:unique name="uniqueSet">
+			<xs:selector xpath="sc:set" />
+			<xs:field xpath="." />
+		</xs:unique>
 	</xs:element>
 
 	<xs:element name="item">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="name" />
-				<xs:element ref="category" />
-				<xs:element ref="sets" />
+				<xs:element ref="sc:name" />
+				<xs:element ref="sc:category" />
+				<xs:element ref="sc:sets" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -31,9 +53,13 @@
 	<xs:element name="items">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="item" maxOccurs="unbounded" />
+				<xs:element ref="sc:item" maxOccurs="unbounded" />
 			</xs:sequence>
 		</xs:complexType>
+		<xs:unique name="uniqueItemName">
+			<xs:selector xpath="sc:item" />
+			<xs:field xpath="sc:name" />
+		</xs:unique>
 	</xs:element>
 
 </xs:schema>

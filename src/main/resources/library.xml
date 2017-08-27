@@ -1,12 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns:items xmlns="http://www.saucecode.com/packer" >
+<?xml version="1.0" encoding="UTF-8" ?>
+<items xmlns="http://www.saucecode.com/packer/xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.saucecode.com/packer/xml items.xsd">
 	<item>
-	<name>sadas</name>
 		<name>Portemonnaie</name>
 		<category>Finanzen</category>
 		<sets>
 			<set>Festival</set>
 			<set>Urlaub</set>
+			<set>ahah</set>
 		</sets>
 	</item>
 	<item>
@@ -69,12 +70,12 @@
 			<set>Urlaub</set>
 		</sets>
 	</item>
-	<item>
+<!-- 	<item>
 		<name></name>
 		<category></category>
 		<sets>
 			<set></set>
 			<set></set>
 		</sets>
-	</item>
-</ns:items>
+	</item> -->
+</items>
