@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<items xmlns="http://www.saucecode.com/packer/xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.saucecode.com/packer/xml ../../main/resources/items.xsd">
+	<item>
+		<name>Portemonnaie</name>
+		<sets>
+			<set>Festival</set>
+			<set>Urlaub</set>
+			<set>ahah</set>
+		</sets>
+	</item>
+</items>
