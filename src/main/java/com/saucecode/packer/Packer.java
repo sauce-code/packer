@@ -188,6 +188,7 @@ public class Packer implements IPacker {
 
 	@Override
 	public void write(File file) throws IOException {
+		// TODO schöner machen
 		ArrayList<String> lines = new ArrayList<String>();
 		lines.add("Packliste erstellt am " + LocalDateTime.now());
 		getSelectedCategories().forEach(c -> {
