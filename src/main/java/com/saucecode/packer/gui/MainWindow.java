@@ -64,6 +64,11 @@ public class MainWindow extends Application {
 	 * Statusbar, showing useless information.
 	 */
 	private final StatusBar statusBar = new StatusBar();
+	
+	/**
+	 * Shows all selected items.
+	 */
+	private final TableView<TableItem> table = new TableView<TableItem>();
 
 	/**
 	 * Creates the menu bar.
@@ -131,6 +136,7 @@ public class MainWindow extends Application {
 		tableItems.clear();
 		List<Item> items = packer.getSelectedItems();
 		items.forEach(e -> tableItems.add(new TableItem(e.getName(), e.getCategory())));
+		table.sort();
 
 		// refresh status bar
 		StringBuilder sb = new StringBuilder();
@@ -174,7 +180,6 @@ public class MainWindow extends Application {
 			});
 		}
 
-		TableView<TableItem> table = new TableView<TableItem>();
 		table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 		TableColumn<TableItem, String> name = new TableColumn<TableItem, String>("Name");
 		name.setCellValueFactory(new PropertyValueFactory<TableItem, String>("name"));
@@ -185,6 +190,7 @@ public class MainWindow extends Application {
 		table.setItems(tableItems);
 		table.getColumns().add(name);
 		table.getColumns().add(category);
+		table.getSortOrder().add(category);
 
 		refresh();
 
