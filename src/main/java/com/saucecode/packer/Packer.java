@@ -30,7 +30,7 @@ import com.saucecode.packer.xml.Items;
  * @author Torben Kr&uuml;ger
  *
  */
-public class Packer implements IPacker {
+public class Packer extends Observable implements IPacker {
 
 	/**
 	 * Path to default schema.
@@ -81,6 +81,7 @@ public class Packer implements IPacker {
 	 *            path to library
 	 */
 	public Packer(String path) {
+		super();
 		this.path = path;
 	}
 
@@ -134,12 +135,23 @@ public class Packer implements IPacker {
 
 	@Override
 	public boolean select(String set) {
-		return selectedSets.contains(set) ? false : selectedSets.add(set);
+		if (selectedSets.contains(set)) {
+			return false;
+		} else {
+			selectedSets.add(set);
+			alertAll();
+			return true;
+		}
 	}
 
 	@Override
 	public boolean unSelect(String set) {
-		return selectedSets.remove(set);
+		if (selectedSets.remove(set)) {
+			alertAll();
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override

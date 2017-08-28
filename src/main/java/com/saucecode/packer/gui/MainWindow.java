@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.controlsfx.control.StatusBar;
 
+import com.saucecode.packer.IObserver;
 import com.saucecode.packer.Packer;
 import com.saucecode.packer.xml.Item;
 
@@ -38,7 +39,7 @@ import javafx.stage.Stage;
  * @author Torben Kr&uuml;ger
  *
  */
-public class MainWindow extends Application {
+public class MainWindow extends Application implements IObserver {
 
 	/**
 	 * The main stage.
@@ -64,7 +65,7 @@ public class MainWindow extends Application {
 	 * Statusbar, showing useless information.
 	 */
 	private final StatusBar statusBar = new StatusBar();
-	
+
 	/**
 	 * Shows all selected items.
 	 */
@@ -127,29 +128,6 @@ public class MainWindow extends Application {
 		return ret;
 	}
 
-	/**
-	 * Refreshes the gui.
-	 */
-	private void refresh() {
-
-		// refresh table
-		tableItems.clear();
-		List<Item> items = packer.getSelectedItems();
-		items.forEach(e -> tableItems.add(new TableItem(e.getName(), e.getCategory())));
-		table.sort();
-
-		// refresh status bar
-		StringBuilder sb = new StringBuilder();
-		sb.append(packer.getSelectedItems().size());
-		sb.append(' ');
-		sb.append((packer.getSelectedItems().size() == 1) ? "Gegenstand" : "Gegenstände");
-		sb.append(" in ");
-		sb.append(packer.getSelectedCategories().size());
-		sb.append(' ');
-		sb.append((packer.getSelectedCategories().size() == 1) ? "Kategorie" : "Kategorien");
-		statusBar.setText(sb.toString());
-	}
-
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
@@ -159,6 +137,8 @@ public class MainWindow extends Application {
 			new ExceptionAlert(e).showAndWait();
 			System.exit(0);
 		}
+		
+		packer.attatch(this);
 
 		stage = primaryStage;
 		VBox checkBoxes = new VBox();
@@ -175,7 +155,6 @@ public class MainWindow extends Application {
 					} else {
 						packer.unSelect(set);
 					}
-					refresh();
 				}
 			});
 		}
@@ -192,7 +171,7 @@ public class MainWindow extends Application {
 		table.getColumns().add(category);
 		table.getSortOrder().add(category);
 
-		refresh();
+		alert();
 
 		BorderPane border = new BorderPane(table, initMenuBar(), null, statusBar, checkBoxes);
 
@@ -213,6 +192,26 @@ public class MainWindow extends Application {
 	 */
 	public static void main(String[] args) {
 		launch(args);
+	}
+
+	@Override
+	public void alert() {
+		// refresh table
+		tableItems.clear();
+		List<Item> items = packer.getSelectedItems();
+		items.forEach(e -> tableItems.add(new TableItem(e.getName(), e.getCategory())));
+		table.sort();
+
+		// refresh status bar
+		StringBuilder sb = new StringBuilder();
+		sb.append(packer.getSelectedItems().size());
+		sb.append(' ');
+		sb.append((packer.getSelectedItems().size() == 1) ? "Gegenstand" : "Gegenstände");
+		sb.append(" in ");
+		sb.append(packer.getSelectedCategories().size());
+		sb.append(' ');
+		sb.append((packer.getSelectedCategories().size() == 1) ? "Kategorie" : "Kategorien");
+		statusBar.setText(sb.toString());
 	}
 
 }
