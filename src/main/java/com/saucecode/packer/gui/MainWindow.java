@@ -204,13 +204,17 @@ public class MainWindow extends Application implements IObserver {
 
 		// refresh status bar
 		StringBuilder sb = new StringBuilder();
-		sb.append(packer.getSelectedItems().size());
-		sb.append(' ');
-		sb.append((packer.getSelectedItems().size() == 1) ? "Gegenstand" : "Gegenstände");
-		sb.append(" in ");
-		sb.append(packer.getSelectedCategories().size());
-		sb.append(' ');
-		sb.append((packer.getSelectedCategories().size() == 1) ? "Kategorie" : "Kategorien");
+		if (packer.getSelectedCategories().size() == 0) {
+			sb.append("");
+		} else {
+			sb.append(packer.getSelectedItems().size());
+			sb.append(' ');
+			sb.append((packer.getSelectedItems().size() == 1) ? "Gegenstand" : "Gegenstände");
+			sb.append(" in ");
+			sb.append(packer.getSelectedCategories().size());
+			sb.append(' ');
+			sb.append((packer.getSelectedCategories().size() == 1) ? "Kategorie" : "Kategorien");
+		}
 		statusBar.setText(sb.toString());
 	}
 
