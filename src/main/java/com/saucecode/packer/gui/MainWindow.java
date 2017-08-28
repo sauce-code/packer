@@ -162,14 +162,13 @@ public class MainWindow extends Application implements IObserver {
 		table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 		TableColumn<TableItem, String> name = new TableColumn<TableItem, String>("Name");
 		name.setCellValueFactory(new PropertyValueFactory<TableItem, String>("name"));
-		name.setPrefWidth(150.0);
 		TableColumn<TableItem, String> category = new TableColumn<TableItem, String>("Kategorie");
 		category.setCellValueFactory(new PropertyValueFactory<TableItem, String>("category"));
-		category.setPrefWidth(250.0);
 		table.setItems(tableItems);
 		table.getColumns().add(name);
 		table.getColumns().add(category);
 		table.getSortOrder().add(category);
+		table.setPrefSize(400.0, 600.0);
 
 		alert();
 
