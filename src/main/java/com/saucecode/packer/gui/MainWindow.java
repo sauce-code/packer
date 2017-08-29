@@ -101,7 +101,7 @@ public class MainWindow extends Application implements IObserver {
 				FileChooser.ExtensionFilter extFilterTXT = new FileChooser.ExtensionFilter("Textdateien (*.txt)",
 						"*.txt");
 				fileChooser.getExtensionFilters().add(extFilterTXT);
-				fileChooser.setInitialFileName("*.txt");
+//				fileChooser.setInitialFileName("*.txt");
 				FileChooser.ExtensionFilter extFilterHTM = new FileChooser.ExtensionFilter("Webseite (*.htm, *.html)",
 						"*.htm", "*.html");
 				fileChooser.getExtensionFilters().add(extFilterHTM);
