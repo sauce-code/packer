@@ -15,7 +15,7 @@ import com.saucecode.packer.xml.Item;
  * 
  * @author Torben Kr&uuml;ger
  * 
- * @since 1.0
+ * @since Packer 1.0
  *
  */
 public interface IPacker {
@@ -25,7 +25,7 @@ public interface IPacker {
 	 * 
 	 * @return all available items
 	 * 
-	 * @since 1.0
+	 * @since Packer 1.0
 	 */
 	public List<Item> getItems();
 
@@ -34,7 +34,7 @@ public interface IPacker {
 	 * 
 	 * @return all selected items
 	 * 
-	 * @since 1.0
+	 * @since Packer 1.0
 	 */
 	public List<Item> getSelectedItems();
 
@@ -43,7 +43,7 @@ public interface IPacker {
 	 * 
 	 * @return all categories
 	 * 
-	 * @since 1.0
+	 * @since Packer 1.0
 	 */
 	public List<String> getCategories();
 
@@ -54,7 +54,7 @@ public interface IPacker {
 	 * 
 	 * @return all selected categories
 	 * 
-	 * @since 1.0
+	 * @since Packer 1.0
 	 */
 	public List<String> getSelectedCategories();
 
@@ -63,7 +63,7 @@ public interface IPacker {
 	 * 
 	 * @return all available sets
 	 * 
-	 * @since 1.0
+	 * @since Packer 1.0
 	 */
 	public List<String> getSets();
 
@@ -72,7 +72,7 @@ public interface IPacker {
 	 * 
 	 * @return all selected sets
 	 * 
-	 * @since 1.0
+	 * @since Packer 1.0
 	 */
 	public List<String> getSelectedSets();
 
@@ -83,7 +83,7 @@ public interface IPacker {
 	 *            set to select
 	 * @return {@code true}, if successful
 	 * 
-	 * @since 1.0
+	 * @since Packer 1.0
 	 */
 	public boolean select(String set);
 
@@ -94,7 +94,7 @@ public interface IPacker {
 	 *            set to unselect
 	 * @return {@code true}, if successful
 	 * 
-	 * @since 1.0
+	 * @since Packer 1.0
 	 */
 	public boolean unSelect(String set);
 
@@ -108,7 +108,7 @@ public interface IPacker {
 	 * @throws IOException
 	 *             if schema file or library could not bee read
 	 * 
-	 * @since 1.0
+	 * @since Packer 1.0
 	 */
 	public void read() throws JAXBException, SAXException, IOException;
 
@@ -120,7 +120,7 @@ public interface IPacker {
 	 * @throws IOException
 	 *             if an error occurred during writing
 	 * 
-	 * @since 1.0
+	 * @since Packer 1.0
 	 */
 	public void write(File file) throws IOException;
 
