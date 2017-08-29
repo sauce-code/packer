@@ -34,7 +34,7 @@ public class HTMLWriter implements IWriter {
 		html(
 		head(
 				title("Packliste"),
-				link().withRel("stylesheet").withHref("/css/main.css").withType("text/css")
+				link().withRel("stylesheet").withHref("https://www.w3schools.com/w3css/4/w3.css").withType("text/css")
 				// TODO add path to existing css
 		),
 		body(
