@@ -1,7 +1,22 @@
 package com.saucecode.packer;
 
+import static j2html.TagCreator.body;
+import static j2html.TagCreator.div;
+import static j2html.TagCreator.each;
+import static j2html.TagCreator.filter;
+import static j2html.TagCreator.h1;
+import static j2html.TagCreator.h2;
+import static j2html.TagCreator.head;
+import static j2html.TagCreator.html;
+import static j2html.TagCreator.li;
+import static j2html.TagCreator.link;
+import static j2html.TagCreator.title;
+import static j2html.TagCreator.ul;
+
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -22,6 +37,8 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
+import org.apache.commons.io.FilenameUtils;
+import org.w3c.tidy.Tidy;
 import org.xml.sax.SAXException;
 
 import com.saucecode.packer.xml.Item;
@@ -204,40 +221,79 @@ public class Packer extends Observable implements IPacker {
 	@Override
 	public void write(File file) throws IOException {
 		ArrayList<String> lines = new ArrayList<String>();
-
-		// first line
-		StringBuilder sb = new StringBuilder();
-		sb.append("Packliste für ");
-		Iterator<String> iter = getSelectedSets().iterator();
-		int current = 0;
-		while (iter.hasNext()) {
-			sb.append(iter.next());
-			current++;
-			if (current == getSelectedSets().size() - 1) {
-				sb.append(" und ");
-			} else if (current != getSelectedSets().size()) {
-				sb.append(", ");
-			}
-		}
-		lines.add(sb.toString());
-
-		// second line
-		Date date = new Date();
-		SimpleDateFormat day = new SimpleDateFormat("d. MMMM YYYY", Locale.GERMANY);
-		SimpleDateFormat time = new SimpleDateFormat("HH:mm", Locale.GERMANY);
-		lines.add("erstellt am " + day.format(date).toString() + " um " + time.format(date).toString() + " Uhr");
-
-		// all categories + items
-		getSelectedCategories().forEach(c -> {
-			lines.add("");
-			lines.add(c);
-			getSelectedItems().forEach(i -> {
-				if (i.getCategory().equals(c)) {
-					lines.add("- " + i.getName());
+		switch (FilenameUtils.getExtension(file.getName())) {
+		case "txt":
+			// first line
+			StringBuilder sb = new StringBuilder();
+			sb.append("Packliste für ");
+			Iterator<String> iter = getSelectedSets().iterator();
+			int current = 0;
+			while (iter.hasNext()) {
+				sb.append(iter.next());
+				current++;
+				if (current == getSelectedSets().size() - 1) {
+					sb.append(" und ");
+				} else if (current != getSelectedSets().size()) {
+					sb.append(", ");
 				}
+			}
+			lines.add(sb.toString());
+
+			// second line
+			Date date = new Date();
+			SimpleDateFormat day = new SimpleDateFormat("d. MMMM YYYY", Locale.GERMANY);
+			SimpleDateFormat time = new SimpleDateFormat("HH:mm", Locale.GERMANY);
+			lines.add("erstellt am " + day.format(date).toString() + " um " + time.format(date).toString() + " Uhr");
+
+			// all categories + items
+			getSelectedCategories().forEach(c -> {
+				lines.add("");
+				lines.add(c);
+				getSelectedItems().forEach(i -> {
+					if (i.getCategory().equals(c)) {
+						lines.add("- " + i.getName());
+					}
+				});
 			});
-		});
-		Files.write(java.nio.file.Paths.get(file.getPath()), lines, Charset.defaultCharset());
+			Files.write(java.nio.file.Paths.get(file.getPath()), lines, Charset.defaultCharset());
+			break;
+		case "htm":
+		case "html":
+			lines.add(
+			//@formatter:off
+			html(
+			head(
+					title("Packliste"),
+					link().withRel("stylesheet").withHref("/css/main.css").withType("text/css")
+			),
+			body(
+	                h1("Packliste"),
+	                each(getSelectedCategories(), category ->
+	                	div(
+	                		h2(category),
+	                		ul(
+	                			each(filter(getSelectedItems(), item -> item.getCategory().equals(category)), item ->
+	                				li(item.getName())
+	                			)
+	                		)
+	                	)
+	                )
+	            )
+			).render());
+			//@formatter:on
+			Tidy tidy = new Tidy();
+			tidy.setQuiet(true);
+			tidy.setShowWarnings(false);
+			tidy.setSmartIndent(true);
+			tidy.setWraplen(Integer.MAX_VALUE);
+			tidy.setInputEncoding(Charset.defaultCharset().name());
+			tidy.setOutputEncoding(Charset.defaultCharset().name());
+			FileWriter fw = new FileWriter(file);
+			tidy.parse(new ByteArrayInputStream(lines.get(0).getBytes(Charset.defaultCharset())), fw);
+			break;
+		default:
+			throw new IOException("nicht unterstützter Dateityp");
+		}
 	}
 
 	@Override

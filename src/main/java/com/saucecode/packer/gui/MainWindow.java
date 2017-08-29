@@ -98,9 +98,13 @@ public class MainWindow extends Application implements IObserver {
 			} else {
 				FileChooser fileChooser = new FileChooser();
 				fileChooser.setTitle("Speichern unter");
-				FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Textdateien (*.txt)", "*.txt");
-				fileChooser.getExtensionFilters().add(extFilter);
+				FileChooser.ExtensionFilter extFilterTXT = new FileChooser.ExtensionFilter("Textdateien (*.txt)",
+						"*.txt");
+				fileChooser.getExtensionFilters().add(extFilterTXT);
 				fileChooser.setInitialFileName("*.txt");
+				FileChooser.ExtensionFilter extFilterHTM = new FileChooser.ExtensionFilter("Webseite (*.htm, *.html)",
+						"*.htm", "*.html");
+				fileChooser.getExtensionFilters().add(extFilterHTM);
 				File file = fileChooser.showSaveDialog(stage);
 				if (file != null) {
 					try {
@@ -137,7 +141,7 @@ public class MainWindow extends Application implements IObserver {
 			new ExceptionAlert(e).showAndWait();
 			System.exit(0);
 		}
-		
+
 		packer.attatch(this);
 
 		stage = primaryStage;
