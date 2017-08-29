@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -224,7 +223,7 @@ public class Packer extends Observable implements IPacker {
 
 		// second line
 		Date date = new Date();
-		SimpleDateFormat day = new SimpleDateFormat("d. MMMM Y", Locale.GERMANY);
+		SimpleDateFormat day = new SimpleDateFormat("d. MMMM YYYY", Locale.GERMANY);
 		SimpleDateFormat time = new SimpleDateFormat("HH:mm", Locale.GERMANY);
 		lines.add("erstellt am " + day.format(date).toString() + " um " + time.format(date).toString() + " Uhr");
 
