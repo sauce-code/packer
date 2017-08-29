@@ -13,6 +13,8 @@ public interface IObserver {
 
 	/**
 	 * Signals the observer that an instance of {@link Observer} has changed.
+	 * 
+	 * @since Packer 1.0
 	 */
 	public void alert();
 
