@@ -221,7 +221,7 @@ public class Packer extends Observable implements IPacker {
 	@Override
 	public void write(File file) throws IOException {
 		ArrayList<String> lines = new ArrayList<String>();
-		switch (FilenameUtils.getExtension(file.getName())) {
+		switch (FilenameUtils.getExtension(file.getName()).toLowerCase()) {
 		case "txt":
 			// first line
 			StringBuilder sb = new StringBuilder();
