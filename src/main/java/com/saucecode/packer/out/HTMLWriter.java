@@ -59,8 +59,7 @@ public class HTMLWriter implements IWriter {
 		tidy.setWraplen(Integer.MAX_VALUE);
 		tidy.setInputEncoding(Charset.defaultCharset().name());
 		tidy.setOutputEncoding(Charset.defaultCharset().name());
-		FileWriter fw = new FileWriter(file);
-		tidy.parse(new ByteArrayInputStream(code.getBytes(Charset.defaultCharset())), fw);
+		tidy.parse(new ByteArrayInputStream(code.getBytes(Charset.defaultCharset())), new FileWriter(file));
 	}
 
 }
