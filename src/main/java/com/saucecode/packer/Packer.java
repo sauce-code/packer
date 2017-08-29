@@ -5,9 +5,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
@@ -200,9 +204,31 @@ public class Packer extends Observable implements IPacker {
 
 	@Override
 	public void write(File file) throws IOException {
-		// TODO schöner machen
 		ArrayList<String> lines = new ArrayList<String>();
-		lines.add("Packliste erstellt am " + LocalDateTime.now());
+
+		// first line
+		StringBuilder sb = new StringBuilder();
+		sb.append("Packliste für ");
+		Iterator<String> iter = getSelectedSets().iterator();
+		int current = 0;
+		while (iter.hasNext()) {
+			sb.append(iter.next());
+			current++;
+			if (current == getSelectedSets().size() - 1) {
+				sb.append(" und ");
+			} else if (current != getSelectedSets().size()) {
+				sb.append(", ");
+			}
+		}
+		lines.add(sb.toString());
+
+		// second line
+		Date date = new Date();
+		SimpleDateFormat day = new SimpleDateFormat("d. MMMM Y", Locale.GERMANY);
+		SimpleDateFormat time = new SimpleDateFormat("HH:mm", Locale.GERMANY);
+		lines.add("erstellt am " + day.format(date).toString() + " um " + time.format(date).toString() + " Uhr");
+
+		// all categories + items
 		getSelectedCategories().forEach(c -> {
 			lines.add("");
 			lines.add(c);
