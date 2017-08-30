@@ -13,7 +13,6 @@ import com.saucecode.packer.xml.Item;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -151,14 +150,11 @@ public class MainWindow extends Application implements IObserver {
 			CheckBox checkBox = new CheckBox(set);
 			checkBox.setPadding(new Insets(3.0, 6.0, 3.0, 6.0));
 			checkBoxes.getChildren().add(checkBox);
-			checkBox.selectedProperty().addListener(new ChangeListener<Boolean>() {
-				@Override
-				public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-					if (newValue) {
-						packer.select(set);
-					} else {
-						packer.unSelect(set);
-					}
+			checkBox.selectedProperty().addListener((ChangeListener<Boolean>) (observable, oldValue, newValue) -> {
+				if (newValue) {
+					packer.select(set);
+				} else {
+					packer.unSelect(set);
 				}
 			});
 		}
