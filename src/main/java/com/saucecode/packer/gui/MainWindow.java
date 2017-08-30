@@ -175,6 +175,7 @@ public class MainWindow extends Application implements IObserver {
 
 		Scene scene = new Scene(border);
 		scene.getStylesheets().add(Paths.CSS_DIMENSIONS);
+		
 		primaryStage.setTitle(MetaInfo.TITLE);
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(true);
