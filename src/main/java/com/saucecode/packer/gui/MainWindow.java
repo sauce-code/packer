@@ -15,7 +15,6 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Menu;
@@ -100,7 +99,7 @@ public class MainWindow extends Application implements IObserver {
 				FileChooser.ExtensionFilter extFilterTXT = new FileChooser.ExtensionFilter("Textdateien (*.txt)",
 						"*.txt");
 				fileChooser.getExtensionFilters().add(extFilterTXT);
-//				fileChooser.setInitialFileName("*.txt");
+				// fileChooser.setInitialFileName("*.txt");
 				FileChooser.ExtensionFilter extFilterHTM = new FileChooser.ExtensionFilter("Webseite (*.htm, *.html)",
 						"*.htm", "*.html");
 				fileChooser.getExtensionFilters().add(extFilterHTM);
@@ -148,7 +147,7 @@ public class MainWindow extends Application implements IObserver {
 
 		for (String set : packer.getSets()) {
 			CheckBox checkBox = new CheckBox(set);
-			checkBox.setPadding(new Insets(3.0, 6.0, 3.0, 6.0));
+			checkBox.getStyleClass().add("check-box-set");
 			checkBoxes.getChildren().add(checkBox);
 			checkBox.selectedProperty().addListener((ChangeListener<Boolean>) (observable, oldValue, newValue) -> {
 				if (newValue) {
@@ -159,6 +158,7 @@ public class MainWindow extends Application implements IObserver {
 			});
 		}
 
+		table.getStyleClass().add("table-view-selected-items");
 		table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 		TableColumn<TableItem, String> name = new TableColumn<TableItem, String>("Name");
 		name.setCellValueFactory(new PropertyValueFactory<TableItem, String>("name"));
@@ -168,14 +168,13 @@ public class MainWindow extends Application implements IObserver {
 		table.getColumns().add(name);
 		table.getColumns().add(category);
 		table.getSortOrder().add(category);
-		table.setPrefSize(400.0, 600.0);
 
 		alert();
 
 		BorderPane border = new BorderPane(table, initMenuBar(), null, statusBar, checkBoxes);
 
 		Scene scene = new Scene(border);
-		scene.getStylesheets().add(Paths.CSS);
+		scene.getStylesheets().add(Paths.CSS_DIMENSIONS);
 		primaryStage.setTitle(MetaInfo.TITLE);
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(true);

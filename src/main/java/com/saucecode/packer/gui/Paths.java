@@ -16,6 +16,6 @@ public class Paths {
 	/**
 	 * The path for css file.
 	 */
-	public static final String CSS = "style.css";
+	public static final String CSS_DIMENSIONS = "dimensions.css";
 
 }

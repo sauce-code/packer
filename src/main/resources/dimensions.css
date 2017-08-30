@@ -1,0 +1,8 @@
+.check-box-set {
+	-fx-padding: 3.0 6.0 3.0 6.0;
+}
+
+.table-view-selected-items {
+	-fx-pref-width: 400.0;
+	-fx-pref-height: 600.0;
+}

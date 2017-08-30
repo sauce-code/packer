@@ -39,7 +39,7 @@ public class PathsTest {
 	 */
 	@Test
 	public void testCSS() {
-		testFile(Paths.CSS);
+		testFile(Paths.CSS_DIMENSIONS);
 	}
 
 }
