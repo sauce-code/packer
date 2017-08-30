@@ -63,6 +63,8 @@
 			<set>Urlaub</set>
 			<set>Festival</set>
 			<set>Camping</set>
+			<set>Freibad</set>
+			<set>Hallenbad</set>
 		</sets>
 	</item>
 	<item>
@@ -72,6 +74,8 @@
 			<set>Urlaub</set>
 			<set>Festival</set>
 			<set>Camping</set>
+			<set>Freibad</set>
+			<set>Hallenbad</set>
 		</sets>
 	</item>
 	<item>
@@ -91,6 +95,8 @@
 			<set>Festival</set>
 			<set>Camping</set>
 			<set>Strand</set>
+			<set>See</set>
+			<set>Freibad</set>
 		</sets>
 	</item>
 	<item>
@@ -227,6 +233,13 @@
 		</sets>
 	</item>
 	<item>
+		<name>Wanderschuhe</name>
+		<category>Kleidung</category>
+		<sets>
+			<set>Wandern</set>
+		</sets>
+	</item>
+	<item>
 		<name>Adressliste für Postkarten</name>
 		<category>Papiere / Unterlagen</category>
 		<sets>
@@ -262,7 +275,7 @@
 		</sets>
 	</item>
 	<item>
-		<name>Studentenausweis</name>
+		<name>Studentenausweis / Schülerausweis</name>
 		<category>Papiere / Unterlagen</category>
 		<sets>
 			<set>Urlaub</set>
@@ -399,26 +412,13 @@
 		</sets>
 	</item>
 	<item>
-		<name>Zewa</name>
-		<category>Sontiges</category>
-		<sets>
-			<set>Festival</set>
-			<set>Camping</set>
-		</sets>
-	</item>
-	<item>
-		<name>Toilettenpapier</name>
-		<category>Sontiges</category>
-		<sets>
-			<set>Festival</set>
-			<set>Camping</set>
-		</sets>
-	</item>
-	<item>
 		<name>Badetuch</name>
 		<category>Badeartikel</category>
 		<sets>
 			<set>Strand</set>
+			<set>See</set>
+			<set>Freibad</set>
+			<set>Hallenbad</set>
 		</sets>
 	</item>
 	<item>
@@ -426,10 +426,31 @@
 		<category>Badeartikel</category>
 		<sets>
 			<set>Strand</set>
+			<set>See</set>
+			<set>Freibad</set>
+			<set>Hallenbad</set>
 		</sets>
 	</item>
 	<item>
 		<name>Volleyball</name>
+		<category>Sportartikel</category>
+		<sets>
+			<set>Strand</set>
+			<set>See</set>
+			<set>Freibad</set>
+		</sets>
+	</item>
+	<item>
+		<name>Wasserball</name>
+		<category>Sportartikel</category>
+		<sets>
+			<set>Strand</set>
+			<set>See</set>
+			<set>Freibad</set>
+		</sets>
+	</item>
+	<item>
+		<name>Beachball Set</name>
 		<category>Sportartikel</category>
 		<sets>
 			<set>Strand</set>
@@ -440,13 +461,8 @@
 		<category>Sportartikel</category>
 		<sets>
 			<set>Strand</set>
-		</sets>
-	</item>
-	<item>
-		<name>Schaufel</name>
-		<category>Strandspielzeug</category>
-		<sets>
-			<set>Strand</set>
+			<set>See</set>
+			<set>Freibad</set>
 		</sets>
 	</item>
 	<item>
@@ -454,13 +470,16 @@
 		<category>Badeartikel</category>
 		<sets>
 			<set>Strand</set>
+			<set>See</set>
 		</sets>
 	</item>
 	<item>
-		<name>Schwimmbrille</name>
-		<category>Strand</category>
+		<name>Taucherbrille</name>
+		<category>Badeartikel</category>
 		<sets>
 			<set>Strand</set>
+			<set>See</set>
+			<set>Freibad</set>
 		</sets>
 	</item>
 	<item>
@@ -468,6 +487,7 @@
 		<category>Badeartikel</category>
 		<sets>
 			<set>Strand</set>
+			<set>See</set>
 		</sets>
 	</item>
 	<item>
@@ -475,18 +495,35 @@
 		<category>Badeartikel</category>
 		<sets>
 			<set>Strand</set>
+			<set>See</set>
 		</sets>
 	</item>
 	<item>
 		<name>Sonnenschirm</name>
-		<category>Strand</category>
+		<category>Sonstiges</category>
 		<sets>
 			<set>Strand</set>
 		</sets>
 	</item>
 	<item>
-		<name>Strandmatte</name>
-		<category>Strand</category>
+		<name>Zewa</name>
+		<category>Sonstiges</category>
+		<sets>
+			<set>Festival</set>
+			<set>Camping</set>
+		</sets>
+	</item>
+	<item>
+		<name>Toilettenpapier</name>
+		<category>Sonstiges</category>
+		<sets>
+			<set>Festival</set>
+			<set>Camping</set>
+		</sets>
+	</item>
+		<item>
+		<name>Schaufel</name>
+		<category>Sonstiges</category>
 		<sets>
 			<set>Strand</set>
 		</sets>
