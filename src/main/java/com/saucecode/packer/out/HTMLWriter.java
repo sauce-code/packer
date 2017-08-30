@@ -1,24 +1,17 @@
 package com.saucecode.packer.out;
 
-import static j2html.TagCreator.body;
-import static j2html.TagCreator.div;
-import static j2html.TagCreator.each;
-import static j2html.TagCreator.filter;
-import static j2html.TagCreator.h1;
-import static j2html.TagCreator.h2;
-import static j2html.TagCreator.head;
-import static j2html.TagCreator.html;
-import static j2html.TagCreator.li;
-import static j2html.TagCreator.link;
-import static j2html.TagCreator.title;
-import static j2html.TagCreator.ul;
+import static j2html.TagCreator.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 import org.w3c.tidy.Tidy;
 
@@ -29,7 +22,28 @@ public class HTMLWriter implements IWriter {
 	@Override
 	public void write(File file, List<Item> selectedItems, List<String> selectedCategories, List<String> selectedSets)
 			throws IOException {
-		String code =
+
+		// first line
+		StringBuilder sb = new StringBuilder();
+		Iterator<String> iter = selectedSets.iterator();
+		int current = 0;
+		while (iter.hasNext()) {
+			sb.append(iter.next());
+			current++;
+			if (current == selectedSets.size() - 1) {
+				sb.append(" und ");
+			} else if (current != selectedSets.size()) {
+				sb.append(", ");
+			}
+		}
+
+		// second line
+		Date date = new Date();
+		SimpleDateFormat day = new SimpleDateFormat("d. MMMM YYYY", Locale.GERMANY);
+		SimpleDateFormat time = new SimpleDateFormat("HH:mm", Locale.GERMANY);
+
+		//generate code
+		String html =
 		//@formatter:off
 		html(
 		head(
@@ -39,6 +53,9 @@ public class HTMLWriter implements IWriter {
 		),
 		body(
                 h1("Packliste"),
+                text(sb.toString()),
+                br(),
+                text("erstellt am " + day.format(date).toString() + " um " + time.format(date).toString() + " Uhr"),
                 each(selectedCategories, category ->
                 	div(
                 		h2(category),
@@ -52,6 +69,7 @@ public class HTMLWriter implements IWriter {
             )
 		).render();
 		//@formatter:on
+		
 		Tidy tidy = new Tidy();
 		tidy.setQuiet(true);
 		tidy.setShowWarnings(false);
@@ -59,7 +77,7 @@ public class HTMLWriter implements IWriter {
 		tidy.setWraplen(Integer.MAX_VALUE);
 		tidy.setInputEncoding(Charset.defaultCharset().name());
 		tidy.setOutputEncoding(Charset.defaultCharset().name());
-		tidy.parse(new ByteArrayInputStream(code.getBytes(Charset.defaultCharset())), new FileWriter(file));
+		tidy.parse(new ByteArrayInputStream(html.getBytes(Charset.defaultCharset())), new FileWriter(file));
 	}
 
 }
