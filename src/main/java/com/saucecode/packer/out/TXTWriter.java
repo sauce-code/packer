@@ -18,7 +18,9 @@ public class TXTWriter implements IWriter {
 	@Override
 	public void write(File file, List<Item> selectedItems, List<String> selectedCategories, List<String> selectedSets)
 			throws IOException {
+
 		List<String> lines = new LinkedList<String>();
+
 		// first line
 		StringBuilder sb = new StringBuilder();
 		sb.append("Packliste für ");
@@ -51,6 +53,8 @@ public class TXTWriter implements IWriter {
 				}
 			});
 		});
+
+		// write file
 		Files.write(java.nio.file.Paths.get(file.getPath()), lines, Charset.defaultCharset());
 	}
 

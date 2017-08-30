@@ -12,7 +12,6 @@ public class PDFWriter implements IWriter {
 	public void write(File file, List<Item> selectedItems, List<String> selectedCategories, List<String> selectedSets)
 			throws IOException {
 		// TODO Auto-generated method stub
-
 	}
 
 }
