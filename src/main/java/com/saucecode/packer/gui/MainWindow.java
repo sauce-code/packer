@@ -175,6 +175,7 @@ public class MainWindow extends Application implements IObserver {
 		BorderPane border = new BorderPane(table, initMenuBar(), null, statusBar, checkBoxes);
 
 		Scene scene = new Scene(border);
+		scene.getStylesheets().add(Paths.CSS);
 		primaryStage.setTitle(MetaInfo.TITLE);
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(true);

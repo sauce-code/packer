@@ -13,4 +13,9 @@ public class Paths {
 	 */
 	public static final String LOGO = "logo.png";
 
+	/**
+	 * The path for css file.
+	 */
+	public static final String CSS = "style.css";
+
 }

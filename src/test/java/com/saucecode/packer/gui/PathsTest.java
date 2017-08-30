@@ -34,4 +34,12 @@ public class PathsTest {
 		testFile(Paths.LOGO);
 	}
 
+	/**
+	 * Tests {@link Paths#CSS}.
+	 */
+	@Test
+	public void testCSS() {
+		testFile(Paths.CSS);
+	}
+
 }
