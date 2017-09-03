@@ -76,6 +76,7 @@ public class HTMLWriter implements IWriter {
 		).render();
 		//@formatter:on
 
+		// set up tidy
 		Tidy tidy = new Tidy();
 		tidy.setQuiet(true);
 		tidy.setShowWarnings(false);
@@ -83,6 +84,8 @@ public class HTMLWriter implements IWriter {
 		tidy.setWraplen(Integer.MAX_VALUE);
 		tidy.setInputEncoding(Charset.defaultCharset().name());
 		tidy.setOutputEncoding(Charset.defaultCharset().name());
+
+		// write formatted html code to file
 		tidy.parse(new ByteArrayInputStream(html.getBytes(Charset.defaultCharset())), new FileWriter(file));
 	}
 
