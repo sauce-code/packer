@@ -47,4 +47,34 @@ public abstract class Observable {
 		observers.forEach(e -> e.alert());
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((observers == null) ? 0 : observers.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Observable other = (Observable) obj;
+		if (observers == null) {
+			if (other.observers != null)
+				return false;
+		} else if (!observers.equals(other.observers))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Observable [observers=" + observers + "]";
+	}
+
 }
