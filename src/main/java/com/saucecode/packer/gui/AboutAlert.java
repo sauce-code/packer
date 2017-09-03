@@ -26,8 +26,15 @@ public class AboutAlert extends Alert {
 		initStyle(StageStyle.UTILITY);
 		setTitle("Info");
 		setHeaderText(MetaInfo.TITLE + " " + MetaInfo.VERSION);
-		setContentText("Autor: " + MetaInfo.AUTHOR + '\n' + "Logo: " + MetaInfo.LOGO_ARTIST + '\n' + "Email: "
-				+ MetaInfo.EMAIL + '\n' + "Verzeichnis: " + MetaInfo.REPOSITORY);
+		//@formatter:off
+		setContentText(
+				"Autor: " + MetaInfo.AUTHOR + '\n' + 
+				"Email: " + MetaInfo.EMAIL + '\n' +
+				"Verzeichnis: " + MetaInfo.REPOSITORY + '\n'  +
+				"Logo: " + MetaInfo.LOGO_ARTIST + '\n' +
+				""); 
+
+		//@formatter:on
 	}
 
 }
