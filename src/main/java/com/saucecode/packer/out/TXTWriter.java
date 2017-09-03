@@ -13,6 +13,12 @@ import java.util.Locale;
 
 import com.saucecode.packer.xml.Item;
 
+/**
+ * Writes pack lists to TXT files.
+ * 
+ * @author Torben Kr&uuml;ger
+ *
+ */
 public class TXTWriter implements IWriter {
 
 	@Override

@@ -17,6 +17,12 @@ import org.w3c.tidy.Tidy;
 
 import com.saucecode.packer.xml.Item;
 
+/**
+ * Writes pack lists to HTML files.
+ * 
+ * @author Torben Kr&uuml;ger
+ *
+ */
 public class HTMLWriter implements IWriter {
 
 	@Override
@@ -42,7 +48,7 @@ public class HTMLWriter implements IWriter {
 		SimpleDateFormat day = new SimpleDateFormat("d. MMMM YYYY", Locale.GERMANY);
 		SimpleDateFormat time = new SimpleDateFormat("HH:mm", Locale.GERMANY);
 
-		//generate code
+		// generate code
 		String html =
 		//@formatter:off
 		html(
@@ -69,7 +75,7 @@ public class HTMLWriter implements IWriter {
             )
 		).render();
 		//@formatter:on
-		
+
 		Tidy tidy = new Tidy();
 		tidy.setQuiet(true);
 		tidy.setShowWarnings(false);
