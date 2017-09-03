@@ -2,16 +2,18 @@
 <library xmlns="http://www.saucecode.com/packer/xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.saucecode.com/packer/xml library.xsd">
 	<sets>
-		<set>Festival</set>
+		<!-- This list also defines the order of all sets -->
 		<set>Urlaub</set>
+		<set>Festival</set>
 		<set>Camping</set>
-		<set>Freibad</set>
-		<set>Hallenbad</set>
+		<set>Wandern</set>
 		<set>Strand</set>
 		<set>See</set>
-		<set>Wandern</set>
+		<set>Freibad</set>
+		<set>Hallenbad</set>
 	</sets>
 	<categories>
+		<!-- This list also defines the order of all categories -->
 		<category>Finanzen</category>
 		<category>Hygiene</category>
 		<category>Kleidung</category>
@@ -23,6 +25,7 @@
 		<category>Sonstiges</category>
 	</categories>
 	<items>
+		<!-- This list also defines the order of all items inside their category -->
 		<item>
 			<name>Portemonnaie</name>
 			<category>Finanzen</category>
