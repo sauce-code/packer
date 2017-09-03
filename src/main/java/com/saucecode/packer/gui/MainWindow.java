@@ -184,16 +184,6 @@ public class MainWindow extends Application implements IObserver {
 		primaryStage.show();
 	}
 
-	/**
-	 * runs the application.
-	 * 
-	 * @param args
-	 *            parameters, unused
-	 */
-	public static void main(String[] args) {
-		launch(args);
-	}
-
 	@Override
 	public void alert() {
 		// refresh table
@@ -216,6 +206,16 @@ public class MainWindow extends Application implements IObserver {
 			sb.append((packer.getSelectedCategories().size() == 1) ? "Kategorie" : "Kategorien");
 		}
 		statusBar.setText(sb.toString());
+	}
+
+	/**
+	 * runs the application.
+	 * 
+	 * @param args
+	 *            parameters, unused
+	 */
+	public static void main(String[] args) {
+		launch(args);
 	}
 
 }
