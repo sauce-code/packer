@@ -22,7 +22,7 @@ import org.xml.sax.SAXException;
 import com.saucecode.packer.out.HTMLWriter;
 import com.saucecode.packer.out.TXTWriter;
 import com.saucecode.packer.xml.Item;
-import com.saucecode.packer.xml.Items;
+import com.saucecode.packer.xml.Library;
 
 /**
  * Represents a packer.
@@ -35,7 +35,7 @@ public class Packer extends Observable implements IPacker {
 	/**
 	 * Path to default schema.
 	 */
-	static final String DEFAULT_SCHEMA_PATH = "src/main/resources/items.xsd";
+	static final String DEFAULT_SCHEMA_PATH = "src/main/resources/library.xsd";
 
 	/**
 	 * Path to default library.
@@ -173,28 +173,14 @@ public class Packer extends Observable implements IPacker {
 		validator.validate(xmlFile);
 
 		// read xml file
-		JAXBContext context = JAXBContext.newInstance(Items.class);
+		JAXBContext context = JAXBContext.newInstance(Library.class);
 		Unmarshaller um = context.createUnmarshaller();
-		Items items = (Items) um.unmarshal(new FileReader(path));
+		Library library = (Library) um.unmarshal(new FileReader(path));
 
-		// buffer items
-		this.items.addAll(items.getItem());
-
-		// buffer sets
-		for (Item item : this.items) {
-			for (String set : item.getSets().getSet()) {
-				if (!sets.contains(set)) {
-					sets.add(set);
-				}
-			}
-		}
-
-		// buffer categories
-		this.items.forEach(e -> {
-			if (!categories.contains(e.getCategory())) {
-				categories.add(e.getCategory());
-			}
-		});
+		// buffer objects
+		items.addAll(library.getItems().getItem());
+		sets.addAll(library.getSets().getSet());
+		categories.addAll(library.getCategories().getCategory());
 
 	}
 

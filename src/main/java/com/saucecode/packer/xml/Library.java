@@ -25,9 +25,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://www.saucecode.com/packer/xml}name"/>
- *         &lt;element ref="{http://www.saucecode.com/packer/xml}category"/>
  *         &lt;element ref="{http://www.saucecode.com/packer/xml}sets"/>
+ *         &lt;element ref="{http://www.saucecode.com/packer/xml}categories"/>
+ *         &lt;element ref="{http://www.saucecode.com/packer/xml}items"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,67 +38,19 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "name",
-    "category",
-    "sets"
+    "sets",
+    "categories",
+    "items"
 })
-@XmlRootElement(name = "item")
-public class Item {
+@XmlRootElement(name = "library")
+public class Library {
 
-    @XmlElement(required = true)
-    protected String name;
-    @XmlElement(required = true)
-    protected String category;
     @XmlElement(required = true)
     protected Sets sets;
-
-    /**
-     * Ruft den Wert der name-Eigenschaft ab.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Legt den Wert der name-Eigenschaft fest.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setName(String value) {
-        this.name = value;
-    }
-
-    /**
-     * Ruft den Wert der category-Eigenschaft ab.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCategory() {
-        return category;
-    }
-
-    /**
-     * Legt den Wert der category-Eigenschaft fest.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCategory(String value) {
-        this.category = value;
-    }
+    @XmlElement(required = true)
+    protected Categories categories;
+    @XmlElement(required = true)
+    protected Items items;
 
     /**
      * Ruft den Wert der sets-Eigenschaft ab.
@@ -122,6 +74,54 @@ public class Item {
      */
     public void setSets(Sets value) {
         this.sets = value;
+    }
+
+    /**
+     * Ruft den Wert der categories-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Categories }
+     *     
+     */
+    public Categories getCategories() {
+        return categories;
+    }
+
+    /**
+     * Legt den Wert der categories-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Categories }
+     *     
+     */
+    public void setCategories(Categories value) {
+        this.categories = value;
+    }
+
+    /**
+     * Ruft den Wert der items-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Items }
+     *     
+     */
+    public Items getItems() {
+        return items;
+    }
+
+    /**
+     * Legt den Wert der items-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Items }
+     *     
+     */
+    public void setItems(Items value) {
+        this.items = value;
     }
 
 }

@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://www.saucecode.com/packer/xml}set" maxOccurs="unbounded"/>
+ *         &lt;element ref="{http://www.saucecode.com/packer/xml}category" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,27 +38,27 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "set"
+    "category"
 })
-@XmlRootElement(name = "sets")
-public class Sets {
+@XmlRootElement(name = "categories")
+public class Categories {
 
     @XmlElement(required = true)
-    protected List<String> set;
+    protected List<String> category;
 
     /**
-     * Gets the value of the set property.
+     * Gets the value of the category property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the set property.
+     * This is why there is not a <CODE>set</CODE> method for the category property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getSet().add(newItem);
+     *    getCategory().add(newItem);
      * </pre>
      * 
      * 
@@ -68,11 +68,11 @@ public class Sets {
      * 
      * 
      */
-    public List<String> getSet() {
-        if (set == null) {
-            set = new ArrayList<String>();
+    public List<String> getCategory() {
+        if (category == null) {
+            category = new ArrayList<String>();
         }
-        return this.set;
+        return this.category;
     }
 
 }

@@ -28,6 +28,18 @@
 		</xs:simpleType>
 	</xs:element>
 
+	<xs:element name="categories">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="sc:category" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+		<xs:unique name="uniqueCategory">
+			<xs:selector xpath="sc:category" />
+			<xs:field xpath="." />
+		</xs:unique>
+	</xs:element>
+
 	<xs:element name="sets">
 		<xs:complexType>
 			<xs:sequence>
@@ -37,6 +49,18 @@
 		<xs:unique name="uniqueSet">
 			<xs:selector xpath="sc:set" />
 			<xs:field xpath="." />
+		</xs:unique>
+	</xs:element>
+
+	<xs:element name="items">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="sc:item" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+		<xs:unique name="uniqueItemName">
+			<xs:selector xpath="sc:item" />
+			<xs:field xpath="sc:name" />
 		</xs:unique>
 	</xs:element>
 
@@ -50,16 +74,30 @@
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="items">
+	<xs:element name="library">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="sc:item" maxOccurs="unbounded" />
+				<xs:element ref="sc:sets" />
+				<xs:element ref="sc:categories" />
+				<xs:element ref="sc:items" />
 			</xs:sequence>
 		</xs:complexType>
-		<xs:unique name="uniqueItemName">
-			<xs:selector xpath="sc:item" />
-			<xs:field xpath="sc:name" />
-		</xs:unique>
+		<xs:key name="setKey">
+			<xs:selector xpath="sc:sets/sc:set" />
+			<xs:field xpath="." />
+		</xs:key>
+		<xs:keyref name="setKeyRef" refer="sc:setKey">
+			<xs:selector xpath="sc:items/sc:item/sc:sets/sc:set" />
+			<xs:field xpath="." />
+		</xs:keyref>
+		<xs:key name="categoryKey">
+			<xs:selector xpath="sc:categories/sc:category" />
+			<xs:field xpath="." />
+		</xs:key>
+		<xs:keyref name="categoryKeyRef" refer="sc:categoryKey">
+			<xs:selector xpath="sc:item/sc:category" />
+			<xs:field xpath="." />
+		</xs:keyref>
 	</xs:element>
 
 </xs:schema>
