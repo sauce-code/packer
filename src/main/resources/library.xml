@@ -6,6 +6,7 @@
 		<set>Urlaub</set>
 		<set>Festival</set>
 		<set>Camping</set>
+		<set>Wintersport</set>
 		<set>Wandern</set>
 		<set>Strand</set>
 		<set>See</set>
@@ -122,6 +123,7 @@
 				<set>Strand</set>
 				<set>See</set>
 				<set>Freibad</set>
+				<set>Wintersport</set>
 			</sets>
 		</item>
 		<item>
@@ -265,6 +267,63 @@
 			</sets>
 		</item>
 		<item>
+			<name>Schneestiefel</name>
+			<category>Kleidung</category>
+			<sets>
+				<set>Wintersport</set>
+			</sets>
+		</item>
+		<item>
+			<name>Skijacke</name>
+			<category>Kleidung</category>
+			<sets>
+				<set>Wintersport</set>
+			</sets>
+		</item>
+		<item>
+			<name>Skihose</name>
+			<category>Kleidung</category>
+			<sets>
+				<set>Wintersport</set>
+			</sets>
+		</item>
+		<item>
+			<name>Skisocken</name>
+			<category>Kleidung</category>
+			<sets>
+				<set>Wintersport</set>
+			</sets>
+		</item>
+		<item>
+			<name>Handschuhe</name>
+			<category>Kleidung</category>
+			<sets>
+				<set>Wintersport</set>
+			</sets>
+		</item>
+		<item>
+			<name>Thermowäsche</name>
+			<category>Kleidung</category>
+			<sets>
+				<set>Wintersport</set>
+			</sets>
+		</item>
+		<item>
+			<name>Schal</name>
+			<category>Kleidung</category>
+			<sets>
+				<set>Wintersport</set>
+			</sets>
+		</item>
+		<item>
+			<name>Hausschuhe</name>
+			<category>Kleidung</category>
+			<sets>
+				<set>Urlaub</set>
+				<set>Wintersport</set>
+			</sets>
+		</item>
+		<item>
 			<name>Adressliste für Postkarten</name>
 			<category>Papiere / Unterlagen</category>
 			<sets>
@@ -348,6 +407,13 @@
 			<sets>
 				<set>Urlaub</set>
 				<set>Camping</set>
+			</sets>
+		</item>
+		<item>
+			<name>Action-Camcorder</name>
+			<category>Elektronik</category>
+			<sets>
+				<set>Wintersport</set>
 			</sets>
 		</item>
 		<item>
@@ -551,6 +617,83 @@
 			<category>Sonstiges</category>
 			<sets>
 				<set>Strand</set>
+			</sets>
+		</item>
+		<item>
+			<name>Skier</name>
+			<category>Sportartikel</category>
+			<sets>
+				<set>Wintersport</set>
+			</sets>
+		</item>
+		<item>
+			<name>Skischuhe</name>
+			<category>Sportartikel</category>
+			<sets>
+				<set>Wintersport</set>
+			</sets>
+		</item>
+		<item>
+			<name>Skistöcke</name>
+			<category>Sportartikel</category>
+			<sets>
+				<set>Wintersport</set>
+			</sets>
+		</item>
+		<item>
+			<name>Snowboard</name>
+			<category>Sportartikel</category>
+			<sets>
+				<set>Wintersport</set>
+			</sets>
+		</item>
+		<item>
+			<name>Snowboardschuhe</name>
+			<category>Sportartikel</category>
+			<sets>
+				<set>Wintersport</set>
+			</sets>
+		</item>
+		<item>
+			<name>Skihelm</name>
+			<category>Sportartikel</category>
+			<sets>
+				<set>Wintersport</set>
+			</sets>
+		</item>
+		<item>
+			<name>Skibrille</name>
+			<category>Sportartikel</category>
+			<sets>
+				<set>Wintersport</set>
+			</sets>
+		</item>
+		<item>
+			<name>Lippenpflegestift</name>
+			<category>Hygiene</category>
+			<sets>
+				<set>Wintersport</set>
+			</sets>
+		</item>
+		<item>
+			<name>Rucksack</name>
+			<category>Sonstiges</category>
+			<sets>
+				<set>Wintersport</set>
+			</sets>
+		</item>
+		<item>
+			<name>Schlitten</name>
+			<category>Sportartikel</category>
+			<sets>
+				<set>Wintersport</set>
+			</sets>
+		</item>
+		<item>
+			<name>Schneeketten</name>
+			<category>Sonstiges</category>
+			<sets>
+				<set>Wintersport</set>
 			</sets>
 		</item>
 	</items>

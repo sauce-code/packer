@@ -95,7 +95,7 @@
 			<xs:field xpath="." />
 		</xs:key>
 		<xs:keyref name="categoryKeyRef" refer="sc:categoryKey">
-			<xs:selector xpath="sc:item/sc:category" />
+			<xs:selector xpath="sc:items/sc:item/sc:category" />
 			<xs:field xpath="." />
 		</xs:keyref>
 	</xs:element>
