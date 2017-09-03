@@ -200,9 +200,15 @@ public class Packer extends Observable implements IPacker {
 	}
 
 	@Override
-	public String toString() {
-		return "Packer [path=" + path + ", items=" + items + ", categories=" + categories + ", sets=" + sets
-				+ ", selectedSets=" + selectedSets + "]";
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((categories == null) ? 0 : categories.hashCode());
+		result = prime * result + ((items == null) ? 0 : items.hashCode());
+		result = prime * result + ((path == null) ? 0 : path.hashCode());
+		result = prime * result + ((selectedSets == null) ? 0 : selectedSets.hashCode());
+		result = prime * result + ((sets == null) ? 0 : sets.hashCode());
+		return result;
 	}
 
 	@Override
@@ -243,15 +249,9 @@ public class Packer extends Observable implements IPacker {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((categories == null) ? 0 : categories.hashCode());
-		result = prime * result + ((items == null) ? 0 : items.hashCode());
-		result = prime * result + ((path == null) ? 0 : path.hashCode());
-		result = prime * result + ((selectedSets == null) ? 0 : selectedSets.hashCode());
-		result = prime * result + ((sets == null) ? 0 : sets.hashCode());
-		return result;
+	public String toString() {
+		return "Packer [items=" + items + ", categories=" + categories + ", sets=" + sets + ", selectedSets="
+				+ selectedSets + ", path=" + path + "]";
 	}
 
 }
