@@ -696,5 +696,12 @@
 				<set>Wintersport</set>
 			</sets>
 		</item>
+		<item>
+			<name>Kofferwaage</name>
+			<category>Sonstiges</category>
+			<sets>
+				<set>Urlaub</set>
+			</sets>
+		</item>
 	</items>
 </library>
