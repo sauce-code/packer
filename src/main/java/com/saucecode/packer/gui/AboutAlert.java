@@ -38,7 +38,6 @@ public class AboutAlert extends Alert {
 				"HTML Generaor: " + MetaInfo.HTML_GENERAOR  + '\n' +
 				"HTML Formatierer: " + MetaInfo.HTML_FORMATTER  + '\n' +
 				""); 
-
 		//@formatter:on
 	}
 
