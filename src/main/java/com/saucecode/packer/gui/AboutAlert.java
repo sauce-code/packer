@@ -28,10 +28,15 @@ public class AboutAlert extends Alert {
 		setHeaderText(MetaInfo.TITLE + " " + MetaInfo.VERSION);
 		//@formatter:off
 		setContentText(
+				"Depot: " + MetaInfo.REPOSITORY + '\n'  +
+				"Lizenz: " + MetaInfo.LICENSE + '\n'  +
+				'\n'  +
 				"Autor: " + MetaInfo.AUTHOR + '\n' + 
 				"Email: " + MetaInfo.EMAIL + '\n' +
-				"Verzeichnis: " + MetaInfo.REPOSITORY + '\n'  +
+				'\n'  +
 				"Logo: " + MetaInfo.LOGO_ARTIST + '\n' +
+				"HTML Generaor: " + MetaInfo.HTML_GENERAOR  + '\n' +
+				"HTML Formatierer: " + MetaInfo.HTML_FORMATTER  + '\n' +
 				""); 
 
 		//@formatter:on

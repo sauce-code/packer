@@ -38,4 +38,19 @@ public class MetaInfo {
 	 */
 	public static final String LOGO_ARTIST = "Dave Gandy (http://fontawesome.io)";
 
+	/**
+	 * The HTML generator.
+	 */
+	public static final String HTML_GENERAOR = "j2html (http://j2html.com)";
+
+	/**
+	 * The HTML formatter.
+	 */
+	public static final String HTML_FORMATTER = "jTTidy (http://jtidy.sourceforge.net)";
+
+	/**
+	 * The licence.
+	 */
+	public static final String LICENSE = "GNU General Public License v3.0 (http://www.gnu.org/licenses/gpl-3.0.de.html)";
+
 }
