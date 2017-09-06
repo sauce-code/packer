@@ -1,7 +1,6 @@
 package com.saucecode.packer;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,12 +34,12 @@ public class Packer extends Observable implements IPacker {
 	/**
 	 * Path to default schema.
 	 */
-	static final String DEFAULT_SCHEMA_PATH = "src/main/resources/library.xsd";
+	static final String DEFAULT_SCHEMA_PATH = "library.xsd";
 
 	/**
 	 * Path to default library.
 	 */
-	static final String DEFAULT_LIBRARY_PATH = "src/main/resources/library.xml";
+	static final String DEFAULT_LIBRARY_PATH = "library.xml";
 
 	/**
 	 * All items.
@@ -163,10 +162,9 @@ public class Packer extends Observable implements IPacker {
 		sets.clear();
 
 		// read schema file
-		File schemaFile = new File(DEFAULT_SCHEMA_PATH);
-		Source xmlFile = new StreamSource(new File(DEFAULT_LIBRARY_PATH));
+		Source xmlFile = new StreamSource(getClass().getClassLoader().getResourceAsStream(DEFAULT_LIBRARY_PATH));
 		SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-		Schema schema = schemaFactory.newSchema(schemaFile);
+		Schema schema = schemaFactory.newSchema(getClass().getClassLoader().getResource(DEFAULT_SCHEMA_PATH));
 
 		// validate library
 		Validator validator = schema.newValidator();
@@ -175,7 +173,7 @@ public class Packer extends Observable implements IPacker {
 		// read xml file
 		JAXBContext context = JAXBContext.newInstance(Library.class);
 		Unmarshaller um = context.createUnmarshaller();
-		Library library = (Library) um.unmarshal(new FileReader(path));
+		Library library = (Library) um.unmarshal(getClass().getClassLoader().getResourceAsStream(DEFAULT_LIBRARY_PATH));
 
 		// buffer objects
 		items.addAll(library.getItems().getItem());
