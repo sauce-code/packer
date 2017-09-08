@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.8-b130911.1802 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2017.09.03 um 10:24:15 PM CEST 
+// Generiert: 2017.09.08 um 03:06:37 PM CEST 
 //
 
 
@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element ref="{http://www.saucecode.com/packer/xml}name"/>
  *         &lt;element ref="{http://www.saucecode.com/packer/xml}category"/>
+ *         &lt;element ref="{http://www.saucecode.com/packer/xml}description" minOccurs="0"/>
  *         &lt;element ref="{http://www.saucecode.com/packer/xml}sets"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -40,6 +41,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "name",
     "category",
+    "description",
     "sets"
 })
 @XmlRootElement(name = "item")
@@ -49,6 +51,7 @@ public class Item {
     protected String name;
     @XmlElement(required = true)
     protected String category;
+    protected String description;
     @XmlElement(required = true)
     protected Sets sets;
 
@@ -98,6 +101,30 @@ public class Item {
      */
     public void setCategory(String value) {
         this.category = value;
+    }
+
+    /**
+     * Ruft den Wert der description-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * Legt den Wert der description-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDescription(String value) {
+        this.description = value;
     }
 
     /**
