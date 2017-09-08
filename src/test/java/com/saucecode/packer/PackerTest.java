@@ -8,6 +8,7 @@ import java.io.IOException;
 
 import javax.xml.bind.JAXBException;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
@@ -27,9 +28,11 @@ public class PackerTest {
 	 *            path to file
 	 */
 	private void testFile(String path) {
-		File file = new File(path);
+		assertFalse(path == null);
+		File file = FileUtils.toFile(getClass().getClassLoader().getResource(path));
 		assertTrue(file.exists());
 		assertFalse(file.isDirectory());
+		assertTrue(file.isFile());
 		assertTrue(file.canRead());
 	}
 
@@ -51,37 +54,43 @@ public class PackerTest {
 	
 	@Test(expected = JAXBException.class)
 	public void testReadInvalid1() throws JAXBException, SAXException, IOException {
-		Packer packer = new Packer("src/test/resources/invalid1.xml");
+		Packer packer = new Packer("invalid1.xml");
 		packer.read();
 	}
 	
 	@Test(expected = SAXParseException.class)
 	public void testReadInvalid2() throws JAXBException, SAXException, IOException {
-		Packer packer = new Packer("src/test/resources/invalid2.xml");
+		Packer packer = new Packer("invalid2.xml");
 		packer.read();
 	}
 	
 	@Test(expected = SAXException.class)
 	public void testReadInvalid3() throws JAXBException, SAXException, IOException {
-		Packer packer = new Packer("src/test/resources/invalid3.xml");
+		Packer packer = new Packer("invalid3.xml");
 		packer.read();
 	}
 	
 	@Test(expected = SAXException.class)
 	public void testReadInvalid4() throws JAXBException, SAXException, IOException {
-		Packer packer = new Packer("src/test/resources/invalid4.xml");
+		Packer packer = new Packer("invalid4.xml");
 		packer.read();
 	}
 	
 	@Test(expected = SAXException.class)
 	public void testReadInvalid5() throws JAXBException, SAXException, IOException {
-		Packer packer = new Packer("src/test/resources/invalid5.xml");
+		Packer packer = new Packer("invalid5.xml");
 		packer.read();
 	}
 	
 	@Test(expected = SAXException.class)
 	public void testReadInvalid6() throws JAXBException, SAXException, IOException {
-		Packer packer = new Packer("src/test/resources/invalid6.xml");
+		Packer packer = new Packer("invalid6.xml");
+		packer.read();
+	}
+	
+	@Test(expected = ClassCastException.class)
+	public void testReadInvalid7() throws JAXBException, SAXException, IOException {
+		Packer packer = new Packer("invalid7.xml");
 		packer.read();
 	}
 
