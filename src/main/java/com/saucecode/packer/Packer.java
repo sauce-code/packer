@@ -173,7 +173,7 @@ public class Packer extends Observable implements IPacker {
 		// read xml file
 		JAXBContext context = JAXBContext.newInstance(Library.class);
 		Unmarshaller um = context.createUnmarshaller();
-		Library library = (Library) um.unmarshal(getClass().getClassLoader().getResourceAsStream(DEFAULT_LIBRARY_PATH));
+		Library library = (Library) um.unmarshal(getClass().getClassLoader().getResourceAsStream(path));
 
 		// buffer objects
 		items.addAll(library.getItems().getItem());
