@@ -21,6 +21,11 @@ public class TableItem {
 	private final SimpleStringProperty category;
 
 	/**
+	 * The description.
+	 */
+	private final SimpleStringProperty description;
+
+	/**
 	 * Creates a new table item.
 	 * 
 	 * @param name
@@ -28,10 +33,11 @@ public class TableItem {
 	 * @param categories
 	 *            categories
 	 */
-	public TableItem(String name, String category) {
+	public TableItem(String name, String category, String description) {
 		super();
 		this.name = new SimpleStringProperty(name);
 		this.category = new SimpleStringProperty(category);
+		this.description = new SimpleStringProperty(description);
 	}
 
 	/**
@@ -50,6 +56,15 @@ public class TableItem {
 	 */
 	public String getCategory() {
 		return category.get();
+	}
+
+	/**
+	 * Returns the description.
+	 * 
+	 * @return description
+	 */
+	public String getDescription() {
+		return description.get();
 	}
 
 }

@@ -22,7 +22,9 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
@@ -168,6 +170,19 @@ public class MainWindow extends Application implements IObserver {
 		table.getColumns().add(name);
 		table.getColumns().add(category);
 		table.getSortOrder().add(category);
+		table.setRowFactory(tv -> new TableRow<TableItem>() {
+            private Tooltip tooltip = new Tooltip();
+            @Override
+            public void updateItem(TableItem tableItem, boolean empty) {
+                super.updateItem(tableItem, empty);
+				if (tableItem == null || tableItem.getDescription() == null) {
+                    setTooltip(null);
+                } else {
+                    tooltip.setText(tableItem.getDescription());
+                    setTooltip(tooltip);
+                }
+            }
+        });
 
 		alert();
 
@@ -189,7 +204,7 @@ public class MainWindow extends Application implements IObserver {
 		// refresh table
 		tableItems.clear();
 		List<Item> items = packer.getSelectedItems();
-		items.forEach(e -> tableItems.add(new TableItem(e.getName(), e.getCategory())));
+		items.forEach(e -> tableItems.add(new TableItem(e.getName(), e.getCategory(), e.getDescription())));
 		table.sort();
 
 		// refresh status bar
