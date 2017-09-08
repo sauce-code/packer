@@ -376,6 +376,14 @@
 				<set>Camping</set>
 			</sets>
 		</item>
+				<item>
+			<name>Tablet + Ladekabel</name>
+			<category>Elektronik</category>
+			<sets>
+				<set>Urlaub</set>
+				<set>Camping</set>
+			</sets>
+		</item>
 		<item>
 			<name>Digitalkamera + Ladekabel</name>
 			<category>Elektronik</category>
@@ -615,6 +623,7 @@
 		<item>
 			<name>Schaufel</name>
 			<category>Sonstiges</category>
+			<description>Eine Schaufel zum Buddeln am Strand</description>
 			<sets>
 				<set>Strand</set>
 			</sets>
