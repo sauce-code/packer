@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="de-DE">
 
 <head>
     <meta charset="utf-8">
-    <title>Idle2</title>
+    <title>Packer</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="packer.css">
+    <script>
+        window.onerror = (a, b, c, d, e) => {
+            alert(`message: ${a}\nsource: ${b}\nlineno: ${c}\ncolno: ${d}\nerror: ${e}`);
+        };
+    </script>
     <script type="module" src="main.js"></script>
 </head>
 
