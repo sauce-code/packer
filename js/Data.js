@@ -34,7 +34,7 @@ export default class Data {
             name: "Mütze",
             category: "#kleidung",
             conditions: ["#winter"],
-            description: "Kommt auf den Kopf. Hät warm. Ziemlich geil."
+            description: "Kommt auf den Kopf. Hält warm. Ziemlich geil."
         }
     ]
 
